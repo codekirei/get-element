@@ -22,7 +22,9 @@
   "homepage": "https://github.com/codekirei/get-element#readme",
   "devDependencies": {
     "chai": "^3.4.1",
+    "express": "^4.13.3",
     "mocha": "^2.3.4",
-    "nightmare": "^2.0.8"
+    "nightmare": "^2.0.8",
+    "serve-static": "^1.10.0"
   }
 }
