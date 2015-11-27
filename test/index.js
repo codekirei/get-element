@@ -64,9 +64,26 @@ describe('get-element', () => {
 
   describe('get elements by tag', () => {
     describe('from document', () => {
-      it('no matches')
-      it('single match')
-      it('multiple matches')
+      const cases = {
+        p: 0,
+        html: 1,
+        div: 3
+      }
+
+      Object.keys(cases).map(key => {
+        it(`case: ${key}`, cb => {
+          return nightmare
+            .goto(fixture)
+            .evaluate(_ => getElement.withTag(_), key)
+            .then(res => {
+              assert.equal(cases[key], res.length)
+              cb()
+            })
+        })
+      })
+      // it('no matches')
+      // it('single match')
+      // it('multiple matches')
     })
 
     describe('from element', () => {
