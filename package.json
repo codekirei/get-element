@@ -4,7 +4,9 @@
   "description": "utility functions to get HTML elements",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "browserify": "node test/bin/browserify.js",
+    "webpack": "echo 'do nothing'"
   },
   "repository": {
     "type": "git",
@@ -21,11 +23,14 @@
   },
   "homepage": "https://github.com/codekirei/get-element#readme",
   "devDependencies": {
+    "app-root-path": "^1.0.0",
+    "browserify": "^12.0.1",
     "chai": "^3.4.1",
     "express": "^4.13.3",
     "mocha": "^2.3.4",
     "mocha-generators": "^1.2.0",
     "nightmare": "^2.0.8",
-    "serve-static": "^1.10.0"
+    "serve-static": "^1.10.0",
+    "webpack": "^1.12.9"
   }
 }

@@ -43,6 +43,7 @@ describe('get-element', () => {
         const result = yield nightmare
           .goto(fixture)
           .evaluate(func, testCase)
+        assert.isArray(result)
         assert.equal(cases.indexOf(testCase), result.length)
       })
     })
@@ -85,6 +86,28 @@ describe('get-element', () => {
       )
     })
   })
+
+  describe('browserify', () => {
+    it('by class from document', function* () {
+      const result = yield nightmare
+        .goto(fixture)
+        .evaluate(() => {
+          var b = require('bGetElement')
+          return b.withClass('two')
+        })
+      assert.equal(2, result.length)
+    })
+    it('by tag from element', function* () {
+      const result = yield nightmare
+        .goto(fixture)
+        .evaluate(() => {
+          var b = require('bGetElement')
+          var root = b.withClass('root')[0]
+          return b.withTag('div', root)
+        })
+      assert.equal(2, result.length)
+    })
+  })
 })
-// browserify / webpack
+
 /* globals getElement */
