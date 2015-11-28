@@ -108,6 +108,27 @@ describe('get-element', () => {
       assert.equal(2, result.length)
     })
   })
+
+  describe('webpack', () => {
+    it('by class from document', function* () {
+      const result = yield nightmare
+        .goto(fixture)
+        .evaluate(() => {
+          return wGetElement.withClass('two')
+        })
+      assert.equal(2, result.length)
+    })
+
+    it('by tag from element', function* () {
+      const result = yield nightmare
+        .goto(fixture)
+        .evaluate(() => {
+          const root = wGetElement.withClass('root')[0]
+          return wGetElement.withTag('div', root)
+        })
+      assert.equal(2, result.length)
+    })
+  })
 })
 
 /* globals getElement */

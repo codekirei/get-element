@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "browserify": "node test/bin/browserify.js",
-    "webpack": "echo 'do nothing'"
+    "webpack": "webpack --config test/bin/webpack.conf.js"
   },
   "repository": {
     "type": "git",
