@@ -4,6 +4,7 @@
 // modules
 //----------------------------------------------------------
 // npm
+require('mocha-generators').install()
 const assert = require('chai').assert
 const Nightmare = require('nightmare')
 const express = require('express')
@@ -12,7 +13,8 @@ const serve = require('serve-static')
 //----------------------------------------------------------
 // tests
 //----------------------------------------------------------
-let nightmare
+// silence warning
+process.setMaxListeners(0)
 
 describe('get-element', () => {
   // set up server
@@ -24,6 +26,7 @@ describe('get-element', () => {
   })
 
   // set up nightmare
+  let nightmare
   beforeEach(() => {
     nightmare = new Nightmare()
   })
@@ -33,64 +36,55 @@ describe('get-element', () => {
       .then(() => cb())
   })
 
+  // helper function
+  function runTests(cases, func) {
+    cases.map(testCase => {
+      it(`case: ${testCase}`, function* () {
+        const result = yield nightmare
+          .goto(fixture)
+          .evaluate(func, testCase)
+        assert.equal(cases.indexOf(testCase), result.length)
+      })
+    })
+  }
 
   describe('get elements by class', () => {
     describe('from document', () => {
-      const cases = {
-        none: 0,
-        one: 1,
-        two: 2
-      }
-
-      Object.keys(cases).map(key => {
-        it(`case: ${key}`, cb => {
-          return nightmare
-            .goto(fixture)
-            .evaluate(_ => getElement.withClass(_), key)
-            .then(res => {
-              assert.equal(cases[key], res.length)
-              cb()
-            })
-        })
-      })
+      runTests(
+        ['none', 'one', 'two'],
+        testClass => getElement.withClass(testClass)
+      )
     })
 
     describe('from element', () => {
-      it('no matches')
-      it('single match')
-      it('multiple matches')
+      runTests(
+        ['none', 'root__one', 'root__two'],
+        testClass => {
+          const root = getElement.withClass('root')[0]
+          return getElement.withClass(testClass, root)
+        }
+      )
     })
   })
 
   describe('get elements by tag', () => {
     describe('from document', () => {
-      const cases = {
-        p: 0,
-        html: 1,
-        div: 3
-      }
-
-      Object.keys(cases).map(key => {
-        it(`case: ${key}`, cb => {
-          return nightmare
-            .goto(fixture)
-            .evaluate(_ => getElement.withTag(_), key)
-            .then(res => {
-              assert.equal(cases[key], res.length)
-              cb()
-            })
-        })
-      })
-      // it('no matches')
-      // it('single match')
-      // it('multiple matches')
+      runTests(
+        ['p', 'html', 'article'],
+        testTag => getElement.withTag(testTag)
+      )
     })
 
     describe('from element', () => {
-      it('no matches')
-      it('single match')
-      it('multiple matches')
+      runTests(
+        ['p', 'span', 'div'],
+        testTag => {
+          const root = getElement.withClass('root')[0]
+          return getElement.withTag(testTag, root)
+        }
+      )
     })
   })
 })
+// browserify / webpack
 /* globals getElement */
