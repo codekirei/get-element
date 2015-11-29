@@ -13,14 +13,14 @@ const uglify = require('uglify-js')
 //----------------------------------------------------------
 // logic
 //----------------------------------------------------------
-// get root dir
+// get absolute path to top-level get-element dir
 const root = p.resolve(process.mainModule.filename, '..', '..', '..')
 
 // read module to string
-const index = fs.readFileSync(p.join(root, 'index.js'), 'utf8')
+const getElement = fs.readFileSync(p.join(root, 'index.js'), 'utf8')
 
 // remove module.exports
-const noExports = index.split('\n').slice(0, -2).join('\n')
+const noExports = getElement.split('\n').slice(0, -2).join('\n')
 
 // append code to bind module to window in browser
 const bound = noExports + `
