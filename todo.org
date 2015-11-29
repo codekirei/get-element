@@ -1,0 +1,3 @@
+- [ ] finish readme
+- [ ] add coverage
+- [ ] publish on npm
