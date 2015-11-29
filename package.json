@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "md": "pm2 start pen",
-    "build": "node browser/bin/build.js",
-    "test-dist": ""
+    "md": "pm2 start pen"
   },
   "repository": {
     "type": "git",
@@ -15,7 +13,8 @@
   },
   "keywords": [
     "html",
-    "element"
+    "element",
+    "selector"
   ],
   "author": "Jacob Blakely (codekirei)",
   "license": "MIT",

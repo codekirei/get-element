@@ -18,11 +18,11 @@ process.setMaxListeners(0)
 
 describe('get-element', () => {
   // set up server
-  const fixture = 'http://localhost:1337'
+  const fixture = 'http://localhost:4333'
   before(() => {
     express()
       .use(serve('test/fixtures'))
-      .listen(1337)
+      .listen(4333)
   })
 
   // set up nightmare
@@ -84,49 +84,6 @@ describe('get-element', () => {
           return getElement.withTag(testTag, root)
         }
       )
-    })
-  })
-
-  describe('browserify', () => {
-    it('by class from document', function* () {
-      const result = yield nightmare
-        .goto(fixture)
-        .evaluate(() => {
-          var b = require('bGetElement')
-          return b.withClass('two')
-        })
-      assert.equal(2, result.length)
-    })
-    it('by tag from element', function* () {
-      const result = yield nightmare
-        .goto(fixture)
-        .evaluate(() => {
-          var b = require('bGetElement')
-          var root = b.withClass('root')[0]
-          return b.withTag('div', root)
-        })
-      assert.equal(2, result.length)
-    })
-  })
-
-  describe('webpack', () => {
-    it('by class from document', function* () {
-      const result = yield nightmare
-        .goto(fixture)
-        .evaluate(() => {
-          return wGetElement.withClass('two')
-        })
-      assert.equal(2, result.length)
-    })
-
-    it('by tag from element', function* () {
-      const result = yield nightmare
-        .goto(fixture)
-        .evaluate(() => {
-          const root = wGetElement.withClass('root')[0]
-          return wGetElement.withTag('div', root)
-        })
-      assert.equal(2, result.length)
     })
   })
 })
