@@ -22,12 +22,4 @@ function withTag(tagName, fromEl) {
   return Array.prototype.slice.call(fromEl.getElementsByTagName(tagName))
 }
 
-(function() {
-  if (typeof module !== 'undefined') {
-    module.exports = {withClass, withTag}
-  } else {
-    this.getElement = {}
-    this.getElement.withClass = withClass
-    this.getElement.withTag = withTag
-  }
-})()
+module.exports = {withClass, withTag}

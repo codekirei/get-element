@@ -4,10 +4,10 @@
   "description": "utility functions to get HTML elements",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "jest",
     "md": "pm2 start pen",
-    "browserify": "node test/bin/browserify.js",
-    "webpack": "webpack --config test/bin/webpack.conf.js"
+    "build": "node browser/bin/build.js",
+    "test-dist": ""
   },
   "repository": {
     "type": "git",
@@ -29,10 +29,12 @@
     "chai": "^3.4.1",
     "expose-loader": "^0.7.1",
     "express": "^4.13.3",
+    "jest-cli": "^0.8.0",
     "mocha": "^2.3.4",
     "mocha-generators": "^1.2.0",
     "nightmare": "^2.0.8",
     "serve-static": "^1.10.0",
+    "uglify-js": "^2.6.1",
     "webpack": "^1.12.9"
   }
 }
