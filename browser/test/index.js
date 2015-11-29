@@ -9,6 +9,7 @@ const assert = require('chai').assert
 const Nightmare = require('nightmare')
 const express = require('express')
 const serve = require('serve-static')
+const ports = require('portchecker')
 
 //----------------------------------------------------------
 // tests
@@ -18,11 +19,16 @@ process.setMaxListeners(0)
 
 describe('get-element', () => {
   // set up server
-  const fixture = 'http://localhost:4333'
-  before(() => {
-    express()
-      .use(serve('test/fixtures'))
-      .listen(4333)
+  let fixture
+  before(cb => {
+    // assign port dynamically
+    ports.getFirstAvailable(4000, 5000, 'localhost', port => {
+      express()
+        .use(serve('test/fixtures'))
+        .listen(port)
+      fixture = `http://localhost:${port}`
+      cb()
+    })
   })
 
   // set up nightmare
