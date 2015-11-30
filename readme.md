@@ -1,7 +1,7 @@
 [![get-element logo](https://raw.githubusercontent.com/codekirei/get-element/master/logo.png)](https://github.com/codekirei/get-element)
 ---
 [![Build Status](https://travis-ci.org/codekirei/get-element.svg?branch=master)](https://travis-ci.org/codekirei/get-element)
-<!--coveralls-->
+[![Coverage Status](https://coveralls.io/repos/codekirei/get-element/badge.svg?branch=master&service=github)](https://coveralls.io/github/codekirei/get-element?branch=master)
 
 <b>[About](#about)</b> |
 <b>[Why](#why)</b> |
