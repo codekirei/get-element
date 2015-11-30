@@ -1,4 +1,4 @@
-![get-element](https://raw.githubusercontent.com/codekirei/get-element/master/logo.png)
+[![get-element logo](https://raw.githubusercontent.com/codekirei/get-element/master/logo.png)](https://github.com/codekirei/get-element)
 ---
 [![Build Status](https://travis-ci.org/codekirei/get-element.svg?branch=master)](https://travis-ci.org/codekirei/get-element)
 <!--coveralls-->
