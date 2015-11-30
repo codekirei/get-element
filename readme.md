@@ -1,6 +1,6 @@
-<!--image-->
+![get-element](https://raw.githubusercontent.com/codekirei/get-element/master/logo.png)
 ---
-<!--travis-->
+[![Build Status](https://travis-ci.org/codekirei/get-element.svg?branch=master)](https://travis-ci.org/codekirei/get-element)
 <!--coveralls-->
 
 <b>[About](#about)</b> |
