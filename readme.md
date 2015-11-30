@@ -49,7 +49,7 @@ Returns an array of elements with the specified class.
 `from` is an optional parameter to specify a root element other than `document`.
 
 ```html
-// index.html
+<!--index.html-->
 <!doctype html>
 <html>
   <head></head>
@@ -84,7 +84,7 @@ Returns an array of elements with the specified tag.
 `from` is an optional parameter to specify a root element other than `document`.
 
 ```html
-// index.html
+<!--index.html-->
 <!doctype html>
 <html>
   <head></head>
