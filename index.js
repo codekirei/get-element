@@ -22,4 +22,7 @@ function withTag(tagName, fromEl) {
   return Array.prototype.slice.call(fromEl.getElementsByTagName(tagName))
 }
 
-module.exports = {withClass, withTag}
+module.exports = {
+  withClass: withClass,
+  withTag: withTag
+}
