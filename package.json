@@ -1,6 +1,6 @@
 {
   "name": "get-element",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "utility functions to get HTML elements",
   "main": "index.js",
   "scripts": {
